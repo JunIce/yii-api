@@ -14,7 +14,10 @@ return [
     'modules' => [
         'v1' => [
             'class' => 'api\modules\v1\module'
-        ]
+        ],
+        'v2' => [
+            'class' => 'api\modules\v2\Module',
+        ],
     ],
     'components' => [
         'request' => [
@@ -52,8 +55,9 @@ return [
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => [
-                        'v1/goods'
-                    ]
+                        'v1/goods',
+                        'v2/region'
+                    ],
                 ],
             ],
         ]

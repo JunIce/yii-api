@@ -37,4 +37,14 @@ class GoodsController extends Controller
             ],
         ];
     }
+
+    public function beforeAction() {
+        echo 'before action';
+        return true;
+    }
+
+    public function afterAction($action, $res)
+    {
+        echo 'after action';
+    }
 }
