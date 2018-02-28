@@ -18,6 +18,9 @@ return [
         'v2' => [
             'class' => 'api\modules\v2\Module',
         ],
+        'v3' => [
+            'class' => 'api\modules\v3\Module',
+        ],
     ],
     'components' => [
         'request' => [
@@ -56,9 +59,12 @@ return [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => [
                         'v1/goods',
-                        'v2/region'
+                        'v2/region',
+                        'v3/home',
                     ],
                 ],
+                'v3/home/classinfo/<classid:\d+>' => 'v3/home/classinfo',
+                'v3/home/infodetail/<classid:\d+>/<id:\d+>' => 'v3/home/infodetail'
             ],
         ]
     ],

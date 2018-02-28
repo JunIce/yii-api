@@ -6,6 +6,7 @@ use yii\rest\Controller;
 use yii\filters\ContentNegotiator;
 use yii\filters\VerbFilter;
 use yii\web\Response;
+use Yii;
 
 use api\models\Goods;
 
@@ -13,6 +14,8 @@ class GoodsController extends Controller
 {
     public function actionGes()
     {
+        $req = Yii::$app->request;
+        var_dump($req->get('id'));
         $model = new Goods();
         $res = $model->find()
         ->asArray()
@@ -22,29 +25,15 @@ class GoodsController extends Controller
 
     public function behaviors()
     {
-       return [
+        return [
             'contentNegotiator' => [
                 'class' => ContentNegotiator::className(),
                 'formats' => [
                     'text/html' => Response::FORMAT_JSON
                 ],
             ],
-            'verbFilter' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'ges' => ['GET'],
-                ]
-            ],
         ];
     }
 
-    public function beforeAction() {
-        echo 'before action';
-        return true;
-    }
 
-    public function afterAction($action, $res)
-    {
-        echo 'after action';
-    }
 }
