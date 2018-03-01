@@ -116,10 +116,21 @@ class Enewsinfotype extends \yii\db\ActiveRecord
 
     public function getInfoTitleType($sql)
     {
-        return Self::find()
+        $model = Self::find()
                 ->select(['title_type', 'typeid', 'tname', 'tpath'])
                 ->where($sql['where'])
-                ->orderBy('title_type')
+                ->asArray()
                 ->all();
+
+        return $this->group_same_key($model, 'title_type');
+
+    }
+
+    public function group_same_key($arr,$key){
+        $new_arr = array();
+        foreach($arr as $k=>$v ){
+            $new_arr[$v[$key]][] = $v;
+        }
+        return $new_arr;
     }
 }

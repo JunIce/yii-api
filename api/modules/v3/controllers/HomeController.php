@@ -82,10 +82,18 @@ class HomeController extends Controller
             'orderby' => ['id' => SORT_DESC],
         ]);
 
-        // $model1 = new Enewsinfotype();
-        // $res['class_tags'] = $model1->getInfoTitleType([
-        //     'where' => ['classid' => $classid ]
-        // ]);
+        return ($res);
+    }
+
+    public function actionInfotype()
+    {
+        $request = Yii::$app->request;
+        $classid = $request->get('classid');
+
+        $model = new Enewsinfotype();
+        $res = $model->getInfoTitleType([
+            'where' => ['classid' => $classid ]
+        ]);
         return ($res);
     }
 
