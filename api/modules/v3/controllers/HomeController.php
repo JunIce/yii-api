@@ -24,11 +24,17 @@ class HomeController extends Controller
      */
     public function actionNewinfolist()
     {
+        $request = Yii::$app->request;
+        $page_size = $request->get('page_size');
+        $page = $request->get('page') - 1;
+        $offset = $page * $page_size;
+        $status = $request->get('status');
+
         $model = new EcmsGou();
         $res = $model->InfoDetail([
             'where' => [],
-            'offset' => 0,
-            'limit' => 12,
+            'offset' => $offset,
+            'limit' => $page_size,
             'orderby' => ['newstime' => SORT_DESC],
         ]);
         return $res;
@@ -62,12 +68,17 @@ class HomeController extends Controller
 
     public function actionClassinfo()
     {
-        $classid =(int)Yii::$app->request->get('classid');
+        $request = Yii::$app->request;
+        $page_size = $request->get('page_size');
+        $page = $request->get('page') - 1;
+        $offset = $page * $page_size;
+        $classid =(int)$request->get('classid');
+
         $model = new EcmsGou();
         $res = $model->InfoDetail([
             'where' => ['classid' => $classid ],
-            'offset' => 0,
-            'limit' => 12,
+            'offset' => $offset,
+            'limit' => $page_size,
             'orderby' => ['id' => SORT_DESC],
         ]);
 
