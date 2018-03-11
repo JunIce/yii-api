@@ -18,7 +18,7 @@ class SiteController extends Controller
            return [
                'message' => 'API test Ok!',
                'code' => 100,
-	       'est' => 'test'
+	     
            ];
     }
 }
