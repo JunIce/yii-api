@@ -97,6 +97,22 @@ class HomeController extends Controller
         return ($res);
     }
 
+    public function actionGetByInfoType()
+    {
+        $request = Yii::$app->request;
+        $ttid = $request->get('ttid');
+        $id = $request->get('id');
+        $model = new EcmsGou();
+        $res = $model->InfoDetail([
+            'where' => ['ttid' => $ttid , ['<>', 'id' , $id]],
+            'offset' => '',
+            'limit' => 6,
+            'orderby' => ['likenum' => SORT_DESC],
+        ]);
+
+        return ($res);
+    }
+
     public function actionInfodetail()
     {
         $id =(int)Yii::$app->request->get('id');

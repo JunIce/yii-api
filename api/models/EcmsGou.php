@@ -154,7 +154,7 @@ class EcmsGou extends \yii\db\ActiveRecord
     public function InfoDetail($sql)
     {
         $res = Self::find()
-                ->select(['id', 'newstime', 'titleurl', 'titlepic', 'title', 'favanum', 'likenum', 'userid', 'username'])
+                ->select(['id', 'newstime', 'titleurl', 'titlepic', 'title', 'favanum', 'likenum', 'ttid', 'userid', 'username'])
                 ->where($sql['where'])
                 ->offset($sql['offset'])
                 ->limit($sql['limit'])
@@ -167,7 +167,7 @@ class EcmsGou extends \yii\db\ActiveRecord
     {
 
         $res = Self::find()
-                ->select(['p.id', 'p.title', 'p.titlepic', 'p.favanum', 'p.likenum', 'p.userid', 'p.username', 'u.userpic', 'p.newstime','p.comm_imgs','p.classid','p.appraise'])
+                ->select(['p.id', 'p.title', 'p.ttid', 'p.titlepic', 'p.favanum', 'p.likenum', 'p.userid', 'p.username', 'u.userpic', 'p.newstime','p.comm_imgs','p.classid','p.appraise'])
                 ->alias('p')
                 ->leftJoin(Enewsmemberadd::tableName().' as u' , 'u.userid = p.userid')
                 ->where(['p.id' => $info['id'] ])

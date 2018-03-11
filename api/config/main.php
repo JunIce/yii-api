@@ -65,6 +65,7 @@ return [
                 ],
                 'v3/home/classinfo/<classid:\d+>' => 'v3/home/classinfo',
                 'v3/home/infodetail/<classid:\d+>/<id:\d+>' => 'v3/home/infodetail',
+                
             ],
         ]
     ],
