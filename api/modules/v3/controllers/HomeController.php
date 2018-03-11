@@ -104,7 +104,7 @@ class HomeController extends Controller
         $id = $request->get('id');
         $model = new EcmsGou();
         $res = $model->InfoDetail([
-            'where' => ['ttid' => $ttid , ['<>', 'id' , $id]],
+            'where' => ['and' ,'ttid' => $ttid, ['<>', 'id', $id]],
             'offset' => '',
             'limit' => 6,
             'orderby' => ['likenum' => SORT_DESC],
