@@ -160,7 +160,8 @@ class EcmsGou extends \yii\db\ActiveRecord
                 ->limit($sql['limit'])
                 ->orderBy($sql['orderby'])
                 ->all();
-        return $res;
+        shuffle($res);
+        return ($res);
     }
 
     public function InfoCDetail($info)
