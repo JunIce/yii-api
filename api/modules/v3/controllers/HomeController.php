@@ -103,11 +103,11 @@ class HomeController extends Controller
         $request = Yii::$app->request;
         $id = $request->post('id');
         $type = $request->post('type');
-
+        $model = new EcmsGou();
         if($type){
-            $res = EcmsGou::increaseFava($id);
+            $res = EcmsGou::updateAllCounters(['likenum'=>1],['id' => $id]);
         }else{
-            $res = EcmsGou::decreaseFava($id);
+            $res = EcmsGou::updateAllCounters(['likenum'=>-1],['id' => $id]);
         }
         
         return $res;
