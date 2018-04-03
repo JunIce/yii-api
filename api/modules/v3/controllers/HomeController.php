@@ -37,6 +37,7 @@ class HomeController extends Controller
             'limit' => $page_size,
             'orderby' => ['newstime' => SORT_DESC],
         ]);
+        
         return $res;
     }
 
@@ -95,6 +96,21 @@ class HomeController extends Controller
             'where' => ['classid' => $classid ]
         ]);
         return ($res);
+    }
+
+    public function actionFava()
+    {
+        $request = Yii::$app->request;
+        $id = $request->post('id');
+        $type = $request->post('type');
+
+        if($type){
+            $res = EcmsGou::increaseFava($id);
+        }else{
+            $res = EcmsGou::decreaseFava($id);
+        }
+        
+        return $res;
     }
 
     public function actionGetByInfoType()

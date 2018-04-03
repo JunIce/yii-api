@@ -177,4 +177,18 @@ class EcmsGou extends \yii\db\ActiveRecord
         $res[0]['tags'] = Enewstagsdata::relateTag($info);
         return $res;
     }
+
+    public static function increaseFava( $id )
+    {
+        $model = EcmsGou::findOne($id);
+        $likenum = $model->likenum + 1;
+        return $model->updateAll(['likenum'=> $likenum]);
+    }
+
+    public static function decreaseFava( $id )
+    {
+        $model = EcmsGou::findOne($id);
+        $likenum = $model->likenum - 1;
+        return $model->updateAll(['likenum'=> $likenum]);
+    }
 }
