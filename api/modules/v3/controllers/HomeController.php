@@ -113,6 +113,23 @@ class HomeController extends Controller
         return $res;
     }
 
+    public function actionTaglist()
+    {
+        $request = Yii::$app->request;
+        $tagid = $request->get('tagid');
+
+        $tagsdata = new Enewstagsdata();
+        $ids = $tagsdata->TagsList($tagid);
+        $model = new EcmsGou();
+        $res = $model->InfoDetail([
+            'where' => ['in', 'id', $ids],
+            'offset' => 0,
+            'limit' => 12,
+            'orderby' => ['id' => SORT_DESC],
+        ]);
+        return ($res);
+    }
+
     public function actionGetByInfoType()
     {
         $request = Yii::$app->request;

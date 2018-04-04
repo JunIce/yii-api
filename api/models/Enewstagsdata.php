@@ -70,4 +70,10 @@ class Enewstagsdata extends \yii\db\ActiveRecord
 
         return $model;
     }
+
+    public function TagsList($tagid)
+    {
+        $res = $this::find()->select(['id'])->where(['tagid'=>$tagid])->asArray()->all();       
+        return array_column($res, 'id');
+    }
 }

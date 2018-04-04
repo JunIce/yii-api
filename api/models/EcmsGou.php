@@ -155,7 +155,7 @@ class EcmsGou extends \yii\db\ActiveRecord
     {
         $res = Self::find()
                 ->select(['id', 'newstime', 'titleurl', 'titlepic', 'title', 'favanum', 'likenum', 'ttid', 'userid', 'username'])
-                ->where($sql['where'])
+                ->where(['in', 'id', [493, 494]])
                 ->offset($sql['offset'])
                 ->limit($sql['limit'])
                 ->orderBy($sql['orderby'])
@@ -177,4 +177,6 @@ class EcmsGou extends \yii\db\ActiveRecord
         $res[0]['tags'] = Enewstagsdata::relateTag($info);
         return $res;
     }
+
+    
 }
