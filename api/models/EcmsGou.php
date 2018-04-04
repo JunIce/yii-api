@@ -155,7 +155,7 @@ class EcmsGou extends \yii\db\ActiveRecord
     {
         $res = Self::find()
                 ->select(['id', 'newstime', 'titleurl', 'titlepic', 'title', 'favanum', 'likenum', 'ttid', 'userid', 'username'])
-                ->where(['in', 'id', [493, 494]])
+                ->where($sql['where'])
                 ->offset($sql['offset'])
                 ->limit($sql['limit'])
                 ->orderBy($sql['orderby'])

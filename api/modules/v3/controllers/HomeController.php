@@ -117,14 +117,17 @@ class HomeController extends Controller
     {
         $request = Yii::$app->request;
         $tagid = $request->get('tagid');
+        $page = $request->get('page');
+        $page_size = $request->get('page_size');        
+        $offset = $page * $page_size;
 
         $tagsdata = new Enewstagsdata();
         $ids = $tagsdata->TagsList($tagid);
         $model = new EcmsGou();
         $res = $model->InfoDetail([
             'where' => ['in', 'id', $ids],
-            'offset' => 0,
-            'limit' => 12,
+            'offset' => $page,
+            'limit' => $page_size,
             'orderby' => ['id' => SORT_DESC],
         ]);
         return ($res);
